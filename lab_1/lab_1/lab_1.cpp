@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void CopyInputFileToOutputFile(ifstream & inputFile, ofstream & outputFile)
+void CopyInputFileToOutputFile(istream & inputFile, ostream & outputFile)
 {
 	string str;
 	while (getline(inputFile, str))
@@ -20,18 +20,22 @@ int main(int argc, char* argv[])
 {
 	if (argc != 3)
 	{
-				cout << "You have entered an false number of arguments!\nInput Example: lab_1.exe input.txt output.txt" << endl;
+		cout << "You have entered an false number of arguments!\nInput Example: lab_1.exe input.txt output.txt" << endl;
 	}
 	else
 	{
 		ifstream inputFile(argv[1]);
-		ofstream outputFile(argv[2], ios_base::app);
-		CopyInputFileToOutputFile(inputFile, outputFile);
+		ofstream outputFile(argv[2]);
+		if (inputFile.is_open()) 
+		{
+			CopyInputFileToOutputFile(inputFile, outputFile);
+		}
+		else
+		{
+			cout << "Error opening file!" << endl;
+		}
 		inputFile.close();
 		outputFile.close();
 	}
 	return 0;
 }
-
-
-
