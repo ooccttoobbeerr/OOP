@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
 	{
 		ifstream inputFile(argv[1]);
 		ofstream outputFile(argv[2]);
-		if (inputFile.is_open()) 
+		if (inputFile.is_open() && outputFile.is_open()) 
 		{
 			CopyInputFileToOutputFile(inputFile, outputFile);
 		}
